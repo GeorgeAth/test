@@ -1,0 +1,57 @@
+#//////////////////////////////////////////////////////////////////////////////
+# AG Development Framework.
+# Copyright 2011-2020 GeorgeAth. All Rights Reserved.
+#//////////////////////////////////////////////////////////////////////////////
+name: Web
+
+# This workflow is triggered on pushes to the [master] branch.
+on:
+  push:
+    branches:
+      - master
+
+env:
+  AG_CI_URL: GeorgeAth
+  AG_CI_PROJECT: AG-DEV
+  AG_CI_BRANCE: test-a2
+  AG_CI_ARGS: --ci --web
+
+jobs:
+  cmake-build-web:
+    name: cmake-build-web
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout the target project."
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ env.AG_CI_URL }}/${{ env.AG_CI_PROJECT }}
+          ref: refs/heads/${{ env.AG_CI_BRANCE }}
+          path: ${{ env.AG_CI_PROJECT }}
+          token: ${{ secrets.agci }}
+          persist-credentials: false
+
+      - name: "Checkout Emscripten."
+        uses: actions/checkout@v2
+        with:
+          repository: emscripten-core/emsdk
+          ref: refs/heads/master
+          path: emsdk
+
+      - name: "Run CI."
+        run: |
+          pushd ./emsdk
+          ./emsdk install latest
+          ./emsdk activate latest
+          source ./emsdk_env.sh
+          popd
+          pushd "${{ env.AG_CI_PROJECT }}"
+          ./scripts/ag.sh ${{ env.AG_CI_ARGS }}
+          popd
+        shell: bash
+
+      - name: "Upload Artifacts."
+        uses: actions/upload-artifact@v1
+        with:
+          name: ag_artifacts_web
+          path: .build/out/bin

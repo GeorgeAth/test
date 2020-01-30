@@ -1,0 +1,46 @@
+#//////////////////////////////////////////////////////////////////////////////
+# AG Development Framework.
+# Copyright 2011-2020 GeorgeAth. All Rights Reserved.
+#//////////////////////////////////////////////////////////////////////////////
+name: iOS
+
+# This workflow is triggered on pushes to the [master] branch.
+on:
+  push:
+    branches:
+      - master
+
+env:
+  AG_CI_URL: GeorgeAth
+  AG_CI_PROJECT: AG-DEV
+  AG_CI_BRANCE: test-a2
+  AG_CI_ARGS: --ci --ios
+
+jobs:
+  cmake-build-ios:
+    name: cmake-build-ios
+    runs-on: macos-latest
+
+    steps:
+      - name: "Checkout the target project."
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ env.AG_CI_URL }}/${{ env.AG_CI_PROJECT }}
+          ref: refs/heads/${{ env.AG_CI_BRANCE }}
+          path: ${{ env.AG_CI_PROJECT }}
+          token: ${{ secrets.agci }}
+          persist-credentials: false
+
+      - name: "Run CI."
+        run: |
+          pushd "${{ env.AG_CI_PROJECT }}"
+          ./scripts/ag-deps.sh
+          ./scripts/ag.sh ${{ env.AG_CI_ARGS }}
+          popd
+        shell: bash
+
+      - name: "Upload Artifacts."
+        uses: actions/upload-artifact@v1
+        with:
+          name: ag_artifacts_ios
+          path: .build/out/bin
