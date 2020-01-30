@@ -4,11 +4,11 @@
 #//////////////////////////////////////////////////////////////////////////////
 name: MacOS
 
-# This workflow is triggered on pushes to the [master] branch.
+# This workflow is triggered on pushes to the [test-all] branch.
 on:
   push:
     branches:
-      - master
+      - test-all
 
 env:
   AG_CI_URL: GeorgeAth
