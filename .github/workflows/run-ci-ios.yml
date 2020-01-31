@@ -8,7 +8,7 @@ name: iOS
 on:
   push:
     branches:
-      - master
+      - test-all
 
 env:
   AG_CI_URL: GeorgeAth
@@ -35,8 +35,8 @@ jobs:
         run: |
           pushd "${{ env.AG_CI_PROJECT }}"
           ./scripts/ag-deps.sh
-          ./scripts/ag.sh ${{ env.AG_CI_ARGS }}
           popd
+          ${{ env.AG_CI_PROJECT }}/scripts/ag.sh ${{ env.AG_CI_ARGS }}
         shell: bash
 
       - name: "Upload Artifacts."
