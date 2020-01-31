@@ -14,6 +14,7 @@ env:
   AG_CI_URL: GeorgeAth
   AG_CI_PROJECT: AG-DEV
   AG_CI_BRANCE: master
+  AG_CI_SCRIPT: scripts/ag.sh
   AG_CI_ARGS: --ci --web
 
 jobs:
@@ -45,7 +46,7 @@ jobs:
           ./emsdk activate latest
           source ./emsdk_env.sh
           popd
-          ${{ env.AG_CI_PROJECT }}/scripts/ag.sh ${{ env.AG_CI_ARGS }}
+          ${{ env.AG_CI_PROJECT }}/${{ env.AG_CI_SCRIPT }} ${{ env.AG_CI_ARGS }}
         shell: bash
 
       - name: "Upload Artifacts."
