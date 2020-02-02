@@ -13,7 +13,7 @@ on:
 env:
   AG_CI_URL: GeorgeAth
   AG_CI_PROJECT: AG-DEV
-  AG_CI_BRANCE: test-web
+  AG_CI_BRANCE: master
   AG_CI_SCRIPT: scripts/ag.sh
   AG_CI_ARGS: --ci --web
 
