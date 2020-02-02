@@ -46,6 +46,7 @@ jobs:
           ./emsdk activate latest
           source ./emsdk_env.sh
           popd
+          emcc --show-ports
           ${{ env.AG_CI_PROJECT }}/${{ env.AG_CI_SCRIPT }} ${{ env.AG_CI_ARGS }}
         shell: bash
 
