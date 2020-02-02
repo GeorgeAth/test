@@ -8,7 +8,7 @@ name: Linux
 on:
   push:
     branches:
-      - test-all
+      - master
 
 env:
   AG_CI_URL: GeorgeAth
