@@ -1,2 +1,2 @@
-vesrion: 0.10.0
-build: A4-200902-0139
+vesrion: 0.10.01-a0
+build: A4-200916-1433
