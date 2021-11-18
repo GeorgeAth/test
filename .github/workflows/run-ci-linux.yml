@@ -1,6 +1,6 @@
 #//////////////////////////////////////////////////////////////////////////////
 # AG Development Framework.
-# Copyright 2011-2020 GeorgeAth. All Rights Reserved.
+# Copyright 2011-2021 GeorgeAth. All Rights Reserved.
 #//////////////////////////////////////////////////////////////////////////////
 name: Linux
 
@@ -8,7 +8,7 @@ name: Linux
 on:
   push:
     branches:
-      - test-all
+      - test-lin
 
 env:
   AG_CI_URL: GeorgeAth
