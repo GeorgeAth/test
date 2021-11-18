@@ -23,21 +23,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup git user
-
-
       - name: "Checkout the target project."
-        uses: actions/checkout@v2.3.4
-        run: |
-            git config user.name github-actions
-            git config user.email github-actions@github.com
+        uses: actions/checkout@v2
         with:
           repository: ${{ env.AG_CI_URL }}/${{ env.AG_CI_PROJECT }}
           ref: refs/heads/${{ env.AG_CI_BRANCE }}
           path: ${{ env.AG_CI_PROJECT }}
           token: ${{ secrets.agci }}
-          #persist-credentials: false
-
+          persist-credentials: false
 
       - name: "Checkout Emscripten."
         uses: actions/checkout@v2
