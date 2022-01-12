@@ -1,2 +1,2 @@
-vesrion: 0.10.02-a0
-build: A0-220111-1958
+vesrion: 0.10.02-a0 (all)
+build: A0-220112-1254
