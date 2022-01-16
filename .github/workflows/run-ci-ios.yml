@@ -34,7 +34,6 @@ jobs:
 
       - name: "Run CI."
         run: |
-          ${{ env.AG_CI_PROJECT }}/scripts/ag-deps.sh
           ${{ env.AG_CI_PROJECT }}/${{ env.AG_CI_SCRIPT }} ${{ env.AG_CI_ARGS }}
         shell: bash
 
