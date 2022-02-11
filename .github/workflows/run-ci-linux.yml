@@ -34,7 +34,8 @@ jobs:
 
       - name: "Run CI."
         run: |
-          sudo apt install mesa-common-dev
+          sudo apt-get update
+          sudo apt-get install mesa-common-dev
           ${{ env.AG_CI_PROJECT }}/${{ env.AG_CI_SCRIPT }} ${{ env.AG_CI_ARGS }}
         shell: bash
 
