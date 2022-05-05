@@ -8,7 +8,7 @@ name: iOS
 on:
   push:
     branches:
-      - test-ios
+      - master
 
 env:
   AG_CI_URL: GeorgeAth

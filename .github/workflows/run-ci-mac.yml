@@ -8,7 +8,7 @@ name: MacOS
 on:
   push:
     branches:
-      - master
+      - test-mac
 
 env:
   AG_CI_URL: GeorgeAth

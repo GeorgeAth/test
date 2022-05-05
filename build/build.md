@@ -1,2 +1,2 @@
-vesrion: 0.10.02-a0 (iOS)
-build: A0-220505-1253
+vesrion: 0.10.02-a0 (mac)
+build: A0-220505-1837
