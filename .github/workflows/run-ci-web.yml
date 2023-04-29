@@ -1,6 +1,6 @@
 #//////////////////////////////////////////////////////////////////////////////
 # AG Development Framework.
-# Copyright 2011-2020 GeorgeAth. All Rights Reserved.
+# Copyright 2011-2023 GeorgeAth. All Rights Reserved.
 #//////////////////////////////////////////////////////////////////////////////
 name: Web
 
@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: "Checkout the target project."
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: ${{ env.AG_CI_URL }}/${{ env.AG_CI_PROJECT }}
           ref: refs/heads/${{ env.AG_CI_BRANCE }}
@@ -33,7 +33,7 @@ jobs:
           persist-credentials: false
 
       - name: "Checkout Emscripten."
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: emscripten-core/emsdk
           ref: refs/heads/main
