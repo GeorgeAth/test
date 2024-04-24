@@ -1,2 +1,2 @@
-version: 0.10.04-a1 (all)
-build: A1-240423-1303
+version: 0.10.04 (all)
+build: A1-240424-1142
