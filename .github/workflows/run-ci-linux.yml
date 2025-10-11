@@ -1,6 +1,6 @@
 #
 # AG Development Framework.
-# Copyright 2011-2024 GeorgeAth. All Rights Reserved.
+# Copyright 2011-2025 GeorgeAth. All Rights Reserved.
 #
 name: Linux
 
@@ -13,7 +13,7 @@ on:
 env:
   AG_CI_URL: GeorgeAth
   AG_CI_PROJECT: AG-DEV
-  AG_CI_BRANCE: master
+  AG_CI_BRANCH: master
   AG_CI_SCRIPT: scripts/ag.sh
   AG_CI_ARGS: --ci
 
@@ -27,15 +27,22 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ${{ env.AG_CI_URL }}/${{ env.AG_CI_PROJECT }}
-          ref: refs/heads/${{ env.AG_CI_BRANCE }}
+          ref: refs/heads/${{ env.AG_CI_BRANCH }}
           path: ${{ env.AG_CI_PROJECT }}
           token: ${{ secrets.agci }}
           persist-credentials: false
 
-      - name: "Run CI."
+      - name: "Install required dependencies."
         run: |
           sudo apt-get update
-          sudo apt-get install mesa-common-dev
+          sudo apt-get install -y \
+            pkg-config \
+            libwayland-dev libxkbcommon-dev wayland-protocols \
+            libasound2-dev \
+            mesa-common-dev
+
+      - name: "Run CI."
+        run: |
           ${{ env.AG_CI_PROJECT }}/${{ env.AG_CI_SCRIPT }} ${{ env.AG_CI_ARGS }}
         shell: bash
 
