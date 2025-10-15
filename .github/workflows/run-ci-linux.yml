@@ -40,8 +40,7 @@ jobs:
             libasound2-dev \
             libwayland-dev libxkbcommon-dev wayland-protocols \
             libdrm-dev libgbm-dev \
-            libegl1-mesa-dev libgl1-mesa-dev \
-            mesa-common-dev
+            libegl1-mesa-dev libgl1-mesa-dev
 
       - name: "Run CI."
         run: |
