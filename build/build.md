@@ -1,2 +1,2 @@
-version: 0.10.05 (all)
-build: A3-251222-1307
+version: 0.10.06 (all)
+build: A1-260106-0128
